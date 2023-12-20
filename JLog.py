@@ -175,8 +175,10 @@ def generate_images(inst, selected_runs):
         print(fname)
         if not os.path.isfile(fname):
             # wksp = LoadISISNexus(inst + str(run['Run Number']))
-            wksp = LoadRaw(Filename=inst + "000" + str(run['Run Number']+'.raw', LoadMonitors='Exclude'))
-            z = wksp.extractY()
+            wksp = LoadRaw(Filename=inst + "000" + str(run['Run Number']+'.raw'), LoadLogFiles=False,
+                           LoadMonitors='Exclude', OutputWorkspace='tmp')
+            tmp = mtd['tmp']
+            z = tmp.extractY()
             plotly_fig = px.imshow(np.log(z), aspect='auto', origin='lower', color_continuous_scale='rainbow')
 
             img_bytes = plotly_fig.to_image(format="png")
