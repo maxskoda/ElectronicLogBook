@@ -46,8 +46,8 @@ df = {}
 
 for inst in inst_list:
     url = f'https://data.isis.rl.ac.uk/journals/ndx{inst.lower()}/summary.txt'
-    auth_user = "ktd43279"  # input("Username: ")
-    auth_passwd = "?tv6yn{kd3"
+    auth_user = ""  # input("Username: ")
+    auth_passwd = ""
 
     passman = urllib.request.HTTPPasswordMgrWithDefaultRealm()
     passman.add_password(None, url, auth_user, auth_passwd)
